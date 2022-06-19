@@ -1,0 +1,24 @@
+header.header {
+  background-color: var(--gray-700);
+  height:12.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+
+header > h1.headerTitle {
+  color: var(--blue);
+  margin-left:1rem;
+  font-weight: 900;
+  font-size:250%;
+}
+
+header > h1.headerTitle  > span {
+  color: var(--purple-dark);
+}
+
+
+header > img.headerLogo {
+  width:1.375rem
+}
