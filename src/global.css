@@ -28,8 +28,9 @@ body {
   height: 100%;
   width:100%;
   font-family: 'Inter', sans-serif;
-  background-color: var(--gray-700);
+  background-color: var(--gray-600);
   color: var(--gray-100);
+  -webkit-font-smoothing: antialiased;
 }
 
 .fs-12 {
