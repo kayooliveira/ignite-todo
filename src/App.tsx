@@ -1,9 +1,11 @@
 import React from 'react'
 
+import { Header } from './components/Header'
+
 export function App() {
   return (
     <>
-      <h1>teste asdasdasd</h1>
+      <Header />
     </>
   )
 }
