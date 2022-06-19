@@ -1,0 +1,57 @@
+form.taskForm {
+  width:80%;
+  max-width: 46rem;
+  margin:0 auto;
+  display:flex;
+  justify-content:center;
+  gap: .5rem;
+  margin-top: calc(0px - (3.375rem / 2) + 2px );
+}
+
+form.taskForm > input.taskInput {
+  height:3.375;
+  padding: 0 1rem 0 1rem;
+  font-size: 1rem;
+  color: var(--gray-100);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color .2s;
+  background-color: var(--gray-500);
+  flex:1;
+}
+
+form.taskForm > input.taskInput:focus {
+  border-color: var(--purple)
+}
+
+form.taskForm > input.taskInput::placeholder {
+  color: var(--gray-300);
+}
+
+form.taskForm > button.taskButton {
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  padding:1rem;
+  background-color: var(--blue);
+  transition: background-color .2s;
+  border-radius:8px;
+  border:none;
+  color:var(--gray-100);
+  font-weight: bold;
+  cursor:pointer;
+}
+
+form.taskForm > button.taskButton:disabled {
+  background-color: var(--gray-300);
+  cursor: not-allowed;
+}
+
+form.taskForm > button.taskButton:not(:disabled):hover {
+  background-color: var(--blue-dark);
+}
+
+form.taskForm > button.taskButton > svg {
+  margin-left:.5rem
+}
+
