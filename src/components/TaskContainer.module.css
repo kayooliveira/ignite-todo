@@ -1,0 +1,49 @@
+section.taskContainer {
+  width: 80%;
+  max-width: 46rem;
+  margin: 4rem auto;
+}
+
+section.taskContainer > header.taskContainerHeader {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom: 1.5rem;
+}
+section.taskContainer > header.taskContainerHeader > p {
+  font-size: 87.5%;
+  font-weight:bold;
+}
+
+section.taskContainer > header.taskContainerHeader > p.taskCreated {
+  color: var(--blue)
+}
+section.taskContainer > header.taskContainerHeader > p.taskFinished {
+  color:var(--purple)
+}
+section.taskContainer > header.taskContainerHeader > p > button {
+  border-radius:999px;
+  border:none;
+  background-color: var(--gray-400);
+  color: var(--gray-200);
+  padding:.125rem .5rem .125rem .5rem;
+  margin-left:0.5rem
+}
+
+div.noTasks {
+  width:100%;
+  border-top: 1px solid var(--gray-400);
+  border-radius: 8px;
+  padding: 4rem 1.5rem;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+}
+
+div.noTasks > p {
+  font-size:1rem;
+  color:var(--gray-300);
+  line-height: 1.4;
+  margin-top:1rem;
+}
