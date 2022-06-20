@@ -9,23 +9,7 @@ import { TaskContainer } from './components/TaskContainer'
 import { TaskForm } from './components/TaskForm'
 
 export function App() {
-  const [tasks, setTasks] = useState<TaskType[]>([
-    {
-      id: v4(),
-      completed: false,
-      task: 'Comprar pão de queijo'
-    },
-    {
-      id: v4(),
-      completed: true,
-      task: 'Alterar dados dos usuários'
-    },
-    {
-      id: v4(),
-      completed: false,
-      task: 'Terminar a refatoração da tela de login'
-    }
-  ])
+  const [tasks, setTasks] = useState<TaskType[]>([])
 
   function handleCreateNewTask(task: string) {
     const newId = v4()
