@@ -14,14 +14,14 @@ form.taskForm > input.taskInput {
   font-size: 1rem;
   color: var(--gray-100);
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: none;
   transition: border-color .2s;
   background-color: var(--gray-500);
   flex:1;
 }
 
 form.taskForm > input.taskInput:focus {
-  border-color: var(--purple)
+  outline-color: var(--purple)
 }
 
 form.taskForm > input.taskInput::placeholder {

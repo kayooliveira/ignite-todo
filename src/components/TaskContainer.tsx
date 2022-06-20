@@ -1,14 +1,21 @@
 import React from 'react'
 
+import { TaskType } from '../@types'
 import emptyTask from '../assets/img/empty-task.svg'
 import { Task } from './Task'
 import styles from './TaskContainer.module.css'
 
 interface TaskContainerProps {
-  tasks: string[]
+  tasks: TaskType[]
+  onCompleteTask: (id: string) => void
+  onDeleteTask: (id: string) => void
 }
 
-export function TaskContainer({ tasks }: TaskContainerProps) {
+export function TaskContainer({
+  tasks,
+  onDeleteTask,
+  onCompleteTask
+}: TaskContainerProps) {
   return (
     <section className={styles.taskContainer}>
       <header className={styles.taskContainerHeader}>
@@ -16,7 +23,8 @@ export function TaskContainer({ tasks }: TaskContainerProps) {
           Tarefas criadas <button>{tasks.length}</button>
         </p>
         <p className={styles.taskFinished}>
-          Concluídas <button>{tasks.length}</button>
+          Concluídas{' '}
+          <button>{tasks.filter(task => task.completed).length}</button>
         </p>
       </header>
       {tasks.length <= 0 ? (
@@ -29,7 +37,14 @@ export function TaskContainer({ tasks }: TaskContainerProps) {
           </p>
         </div>
       ) : (
-        tasks.map(task => <Task key={task} task={task} />)
+        tasks.map(task => (
+          <Task
+            key={task.id}
+            task={task}
+            onDeleteTask={onDeleteTask}
+            onCompleteTask={onCompleteTask}
+          />
+        ))
       )}
     </section>
   )

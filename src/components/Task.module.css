@@ -1,0 +1,147 @@
+div.taskCard {
+  padding:1rem;
+  width:'100%';
+  background-color: var(--gray-500);
+  border: 1px solid var(gray-400);
+  border-radius:8px;
+  color: var(--gray-100);
+  display:flex;
+  justify-content: space-between;
+}
+
+div.taskCard + div.taskCard {
+  margin-top:1rem;
+}
+
+div.taskCard > div.taskContent > p.task {
+  font-size: 87.5%;
+  color: var(--gray-100);
+  line-height: 1.4;
+  flex:1;
+}
+div.taskCard > div.taskContent > p.task.taskChecked {
+  text-decoration: line-through;
+}
+
+div.taskCard > div.taskContent > label.taskInput {
+  display: block;
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 1.4;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background:none;
+  border:none;
+}
+
+
+div.taskCard > div.taskContent {
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex:1;
+}
+
+div.taskCard > div.taskContent > label.taskInput input {
+  opacity: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+div.taskCard > div.taskContent > label.taskInput input:focus ~ .checkbox {
+  outline: 2px solid var(--purple-dark);
+}
+
+div.taskCard > div.taskContent > label.taskInput > span.checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(1.5rem - 2px);
+  width: calc(1.5rem - 2px);
+  border:2px solid var(--blue);
+  border-radius:999px;
+  background-color: transparent;
+  transition: all .2s;
+}
+
+
+div.taskCard > div.taskContent > label.taskInput:hover input ~ .checkbox {
+  background-color: var(--blue-dark);
+  
+}
+
+div.taskCard > div.taskContent > label.taskInput input:checked ~ .checkbox {
+  background-color: var(--purple-dark);
+  border-color: var(--purple-dark);
+}
+
+div.taskCard > div.taskContent > label.taskInput input:checked:hover ~ .checkbox {
+  background-color: var(--purple);
+  border-color: var(--purple);
+}
+
+.checkbox:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+div.taskCard > div.taskContent > label.taskInput input:checked ~ .checkbox:after {
+  display: block;
+}
+
+div.taskCard > div.taskContent > label.taskInput .checkbox:after {
+  left: 0.4rem;
+  top: 0.25rem;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-width: 0 2px 2px 0;
+  animation: slideFromUp .1s;
+  transition: .1s;
+} 
+
+
+@keyframes slideFromUp {
+  from{
+    transform: translateY(-100%);
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to{
+    transform: translateY(0);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+
+button.taskDelete {
+  padding: .3125rem;
+  border-radius:8px;
+  color: var(--gray-300);
+  transition: all .2s;
+  background:transparent;
+  border:none;
+  line-height: 0;
+}
+
+button.taskDelete > svg {
+  width:1.5rem;
+  height:1.5rem;
+}
+
+
+button.taskDelete:not(:disabled):hover {
+  background-color: var(--gray-400);
+  color: var(--danger);
+}
