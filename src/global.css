@@ -21,7 +21,11 @@
   margin:0;
   padding: 0;
   box-sizing: border-box;
-  outline:none
+}
+
+:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 2px var(--purple-dark);
 }
 
 body {
@@ -31,6 +35,7 @@ body {
   background-color: var(--gray-600);
   color: var(--gray-100);
   -webkit-font-smoothing: antialiased;
+  outline:none;
 }
 
 .fs-12 {
