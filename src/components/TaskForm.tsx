@@ -1,5 +1,5 @@
 import { PlusCircle } from 'phosphor-react'
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useRef, useState } from 'react'
 
 import styles from './TaskForm.module.css'
 
@@ -9,6 +9,7 @@ interface TaskFormProps {
 
 export function TaskForm({ onSubmit }: TaskFormProps) {
   const [taskInput, setTaskInput] = useState('')
+  const inputRef = useRef<HTMLInputElement>(null)
 
   function handleChangeTaskInput(e: ChangeEvent<HTMLInputElement>) {
     setTaskInput(e.target.value)
@@ -16,15 +17,19 @@ export function TaskForm({ onSubmit }: TaskFormProps) {
 
   function handleSubmitNewTask(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    inputRef.current?.focus()
     if (taskInput.trim() !== '') {
       onSubmit(taskInput)
       setTaskInput('')
     }
   }
+
   return (
     <form onSubmit={handleSubmitNewTask} className={styles.taskForm}>
       <input
         name="task"
+        autoFocus
+        ref={inputRef}
         placeholder="Adicione uma nova tarefa"
         onChange={handleChangeTaskInput}
         value={taskInput}
