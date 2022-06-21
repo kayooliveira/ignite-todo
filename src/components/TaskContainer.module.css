@@ -24,6 +24,7 @@ section.taskContainer > header.taskContainerHeader > p.taskFinished {
 section.taskContainer > header.taskContainerHeader > p > button {
   border-radius:999px;
   border:none;
+  font-weight:bold;
   background-color: var(--gray-400);
   color: var(--gray-200);
   padding:.125rem .5rem .125rem .5rem;

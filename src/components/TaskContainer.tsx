@@ -16,6 +16,8 @@ export function TaskContainer({
   onDeleteTask,
   onCompleteTask
 }: TaskContainerProps) {
+  const completedTasks = tasks.filter(task => task.completed).length
+
   return (
     <section className={styles.taskContainer}>
       <header className={styles.taskContainerHeader}>
@@ -24,7 +26,11 @@ export function TaskContainer({
         </p>
         <p className={styles.taskFinished}>
           Concluídas{' '}
-          <button>{tasks.filter(task => task.completed).length}</button>
+          <button>
+            {completedTasks > 0
+              ? `${completedTasks} de ${tasks.length}`
+              : completedTasks}
+          </button>
         </p>
       </header>
       {tasks.length <= 0 ? (
