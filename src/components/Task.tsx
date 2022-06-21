@@ -36,24 +36,25 @@ export function Task({ task, onDeleteTask, onCompleteTask }: TaskProps) {
 
   return (
     <div className={styles.taskCard}>
-      <div onClick={completeTask} className={styles.taskContent}>
+      <div className={styles.taskContent}>
         <label className={styles.taskInput}>
           <input
             ref={inputRef}
-            onChange={changeInputChecked}
+            onChange={completeTask}
             type="checkbox"
             defaultChecked={task.completed}
+            checked={task.completed}
             name={task.id}
           />
           <span className={styles.checkbox}></span>
+          <p
+            className={`${styles.task} ${
+              task.completed && `${styles.taskChecked}`
+            }`}
+          >
+            {task.task}
+          </p>
         </label>
-        <p
-          className={`${styles.task} ${
-            task.completed && `${styles.taskChecked}`
-          }`}
-        >
-          {task.task}
-        </p>
       </div>
       <DeleteTaskModal
         trigger={

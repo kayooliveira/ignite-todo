@@ -13,18 +13,20 @@ div.taskCard + div.taskCard {
   margin-top:1rem;
 }
 
-div.taskCard > div.taskContent > p.task {
+div.taskCard > div.taskContent > label.taskInput >  p.task {
   font-size: 87.5%;
   color: var(--gray-100);
   line-height: 1.4;
   flex:1;
 }
-div.taskCard > div.taskContent > p.task.taskChecked {
+div.taskCard > div.taskContent > label.taskInput > p.task.taskChecked {
   text-decoration: line-through;
 }
 
 div.taskCard > div.taskContent > label.taskInput {
-  display: block;
+  display: flex;
+  align-items:center;
+  flex:1;
   position: relative;
   padding-left: 28px;
   cursor: pointer;
