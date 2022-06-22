@@ -7,9 +7,19 @@ import { TaskType } from './@types'
 import { Header } from './components/Header'
 import { TaskContainer } from './components/TaskContainer'
 import { TaskForm } from './components/TaskForm'
+import { getItemFromStore, store } from './utils/store'
 
 export function App() {
-  const [tasks, setTasks] = useState<TaskType[]>([])
+  const [tasks, setTasks] = useState<TaskType[]>(
+    getItemFromStore({ key: 'tasks' }) || []
+  )
+
+  function storeTasksLocally(tasks: TaskType[]) {
+    store({
+      key: 'tasks',
+      value: tasks
+    })
+  }
 
   function handleCreateNewTask(task: string) {
     const newId = v4()
@@ -23,18 +33,22 @@ export function App() {
         icon: <Prohibit weight="bold" />
       })
     }
-    setTasks([...tasks, { id: newId, completed: false, task }])
+    const newTasks = [...tasks, { id: newId, completed: false, task }]
+    storeTasksLocally(newTasks)
+    setTasks(newTasks)
   }
 
   function handleCompleteTask(id: string) {
     const newTasks = tasks.map(task =>
       task.id === id ? { ...task, completed: !task.completed } : task
     )
+    storeTasksLocally(newTasks)
     setTasks(newTasks)
   }
 
   function handleDeleteTask(id: string) {
     const newTasks = tasks.filter(task => task.id !== id)
+    storeTasksLocally(newTasks)
     setTasks(newTasks)
   }
 
