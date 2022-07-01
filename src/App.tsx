@@ -39,10 +39,13 @@ export function App() {
   }
 
   function handleCompleteTask(id: string) {
-    const task = tasks.find(t => t.id === id)!
     handleDeleteTask(id)
     setTasks(state => {
-      const newTasks = [...state, { ...task, completed: !task.completed }]
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const task = tasks.find(t => t.id === id)!
+      const newTasks = task.completed
+        ? [{ ...task, completed: false }, ...state]
+        : [...state, { ...task, completed: true }]
       storeTasksLocally(newTasks)
       return newTasks
     })
