@@ -1,10 +1,10 @@
+import { motion } from 'framer-motion'
 import { Trash } from 'phosphor-react'
 import React, { useRef } from 'react'
 
 import { TaskType } from '../@types'
 import { DeleteTaskModal } from './DeleteTaskModal'
 import styles from './Task.module.css'
-
 interface TaskProps {
   task: TaskType
   onCompleteTask: (id: string) => void
@@ -15,7 +15,6 @@ export function Task({ task, onDeleteTask, onCompleteTask }: TaskProps) {
   const inputRef = useRef<HTMLInputElement>(null)
 
   function changeInputChecked() {
-    // set checkbox to checked or unchecked based on current state
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const input = inputRef.current!
     if (input.checked) {
@@ -34,8 +33,28 @@ export function Task({ task, onDeleteTask, onCompleteTask }: TaskProps) {
     return onDeleteTask(task.id)
   }
 
+  const motionVariants = {
+    initial: {
+      opacity: 0,
+      translateY: -40
+    },
+    animate: {
+      opacity: 1,
+      translateY: 0,
+      transition: {
+        duration: 0.2
+      }
+    }
+  }
+
   return (
-    <div className={styles.taskCard}>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      layout
+      className={styles.taskCard}
+      variants={motionVariants}
+    >
       <div className={styles.taskContent}>
         <label className={styles.taskInput}>
           <input
@@ -64,6 +83,6 @@ export function Task({ task, onDeleteTask, onCompleteTask }: TaskProps) {
         }
         onSuccess={deleteTask}
       />
-    </div>
+    </motion.div>
   )
 }

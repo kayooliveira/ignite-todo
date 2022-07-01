@@ -33,7 +33,7 @@ export function App() {
         icon: <Prohibit weight="bold" />
       })
     }
-    const newTasks = [...tasks, { id: newId, completed: false, task }]
+    const newTasks = [{ id: newId, completed: false, task }, ...tasks]
     storeTasksLocally(newTasks)
     setTasks(newTasks)
   }
