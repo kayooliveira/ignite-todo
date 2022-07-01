@@ -39,11 +39,13 @@ export function App() {
   }
 
   function handleCompleteTask(id: string) {
-    const newTasks = tasks.map(task =>
-      task.id === id ? { ...task, completed: !task.completed } : task
-    )
-    storeTasksLocally(newTasks)
-    setTasks(newTasks)
+    const task = tasks.find(t => t.id === id)!
+    handleDeleteTask(id)
+    setTasks(state => {
+      const newTasks = [...state, { ...task, completed: !task.completed }]
+      storeTasksLocally(newTasks)
+      return newTasks
+    })
   }
 
   function handleDeleteTask(id: string) {
